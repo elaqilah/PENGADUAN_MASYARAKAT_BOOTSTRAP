@@ -13,7 +13,7 @@
                     <label class="form-label">Nama Lengkap</label>
                     <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap" required>
 
-                    <label class="form-label">User</label>
+                    <label class="form-label">Username</label>
                     <input type="text" class="form-control" name="username" placeholder="Masukkan Username" required>
 
                     <label class="form-label">Password</label>
@@ -24,9 +24,28 @@
             </div>
             <div class="card-footer">
                 <button type="submit" name="kirim" class="btn btn-primary">DAFTAR</button>
-                <a href="index.php">Sudah Punya Akun? Login Disini</a>
+                <a href="index.php?page=login">Sudah Punya Akun? Login Disini</a>
             </div>
             </form>
         </div>
     </div>
 </div>
+<?php
+include ('config/koneksi.php');
+
+if (isset($_POST['kirim'])){
+    $nik = $_POST['nik'];
+    $nama = $_POST['nik'];
+    $username = $_POST['nik'];
+    $password = $_POST['nik'];
+    $telp = $_POST['nik'];
+    $level = $_POST['nik'];
+
+    $query = mysqli_query($koneksi, "INSERT INTO masyarakat VALUES ('$nik',
+    '$nama','$username','$password','$telp','$level'");
+
+    if ($query){
+        header('location:index.php?page=login');
+    }
+}
+?>
